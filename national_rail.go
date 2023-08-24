@@ -1,4 +1,4 @@
-package train_departures
+package traindeps
 
 import (
 	"io"

@@ -10,10 +10,27 @@ looks like it will be replaced with an improved board.
 To fetch a train departure board it is as easy as referencing the project and calling:
 
 ```go
-train_departures.LoadFromInternet("STATION")
+package main
+
+import (
+	"fmt"
+	"github.com/bperryman/traindeps"
+	"os"
+)
+
+func main() {
+	board, err := traindeps.LoadFromInternet("STATION")
+	if err != nil {
+		fmt.Printf("Error loading the departure board")
+		os.Exit(-1)
+	}
+	for _, dep := range board.Departures {
+		fmt.Printf("To: %s, leaving from: %s\n", dep.Destination, dep.Platform)
+    }
+}
 ```
 
-Here station is the 3 letter code, for example `KGX` is the code for London Kings Cross. A list of these can be found on
+Here `STATION` is the 3-letter code, for example `KGX` is the code for London Kings Cross. A list of these can be found on
 [Wikipedia](https://en.wikipedia.org/wiki/UK_railway_stations_–_A)
 
 ## History
@@ -27,7 +44,7 @@ Now I want to use this for a notice board, based around the
 - yes, yes it looked cool and I bought it, so now I have a solution looking for a problem (again).
 
 ## TODO
-- [ ] Rename the package to something more go friendly.
+- [X] Rename the package to something more go friendly.
 - [ ] Update the scraper to retrieve the departure boards from the new presentation (currently beta?)
 - [ ] Update to include any special notifiers that are displayed - for example delays due to bad weather or special
 services being run

@@ -1,4 +1,4 @@
-module github.com/bperryman/train_departures
+module github.com/bperryman/traindeps
 
 go 1.21.0
 
