@@ -19,3 +19,9 @@
 
 # Go workspace file
 go.work
+
+# Mac tax
+.DS_Store
+
+# goland
+.idea/
